@@ -12,7 +12,7 @@ gem 'pxvideo_rails'
 
 Add the resources to your application.js file
 
-```javascript
+```coffeescript
 # app/assets/javascripts/application.js
 //= require px-video
 ```
@@ -35,7 +35,8 @@ Rails.application.config.assets.precompile += %w( px-video-sprite.png )
 ## Usage
 
 ```erb
-<%= pxvideo_rails sources: { mp4: "https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline.mp4" } %>
+<%= pxvideo_rails
+sources: { mp4: "https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline.mp4" } %>
 ```
 
 ### Properties
