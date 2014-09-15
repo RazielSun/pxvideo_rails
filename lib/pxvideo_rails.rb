@@ -1,5 +1,2 @@
-class Pxvideo_rails
-	def self.hi
-		puts "Hello world";
-	end
-end
+require 'pxvideo_rails/railtie'
+require 'pxvideo_rails/engine'
