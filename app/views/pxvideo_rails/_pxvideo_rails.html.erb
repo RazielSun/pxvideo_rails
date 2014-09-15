@@ -1,0 +1,41 @@
+<div class="px-video-container" id="myvid">
+	<div class="px-video-img-captions-container">
+		<div class="px-video-captions hide" aria-hidden="true"></div>
+		<video
+			id="<%=options[:id]%>"
+			<%= "controls" if !!options[:controls] %>
+			width="<%=options[:width]%>"
+			height="<%=options[:height]%>"
+			poster="<%=options[:poster]%>"
+			preload="<%=options[:preload]%>"
+			data-setup="<%= options[:setup] %>"
+		>
+			<!-- source files -->
+			<% if options[:sources] %>
+				<%- options[:sources].each do |type, source| %>
+					<source src="<%= source %>" type='video/<%= type %>' />
+				<%- end %>
+			<%- end %>
+			
+			<!-- text track file -->
+			<% if options[:captions] %>
+				<%- options[:captions].each do |lang, caption| %>
+					<track kind="captions" src="<%= caption %>" srclang="<%= lang %>" label="<%= lang %>" />
+				<%- end %>
+			<%- end %>
+			
+			<!-- fallback for browsers that don't support the video element -->
+			<div>
+				<% if options[:sources] %>
+					<%- options[:sources].each do |type, source| %>
+						<a href="<%= source %>">
+							<img src="<%=options[:poster]%>" width="<%=options[:width]%>" height="<%=options[:height]%>" alt="download video" />
+						</a>
+					<%- end %>
+				<%- end %>
+				
+			</div>
+		</video>
+	</div><!-- end container for captions and video -->
+	<div class="px-video-controls"></div>
+</div><!-- end video container -->
